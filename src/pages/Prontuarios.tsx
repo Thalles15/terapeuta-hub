@@ -5,7 +5,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -29,13 +28,7 @@ const Prontuarios = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-heading font-bold">Prontuário</h1>
-        <Button className="bg-primary hover:bg-primary/90">
-          <Plus className="h-4 w-4 mr-2" />
-          Novo Prontuário
-        </Button>
-      </div>
+      <h1 className="text-3xl font-heading font-bold">Prontuário</h1>
       
       <Card className="p-6">
         <div className="grid gap-4 md:grid-cols-2 mb-6">
