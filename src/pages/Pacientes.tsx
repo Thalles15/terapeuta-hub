@@ -22,6 +22,7 @@ type Patient = {
 const Pacientes = () => {
   const [patients, setPatients] = useState<Patient[]>([]);
   const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleSavePatient = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,18 +41,14 @@ const Pacientes = () => {
 
     setPatients(prev => [...prev, newPatient]);
     toast.success("Paciente adicionado com sucesso!");
-    const dialogElement = document.querySelector("[data-state='open']");
-    if (dialogElement) {
-      const closeButton = dialogElement.querySelector("button[data-state='closed']");
-      closeButton?.click();
-    }
+    setIsDialogOpen(false); // Close the dialog after saving
   };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-heading font-bold">Pacientes</h1>
-        <Dialog>
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button className="bg-primary hover:bg-primary/90">
               <Plus className="h-4 w-4 mr-2" />
